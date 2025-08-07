@@ -1,0 +1,15 @@
+package com.foodapp.beforeLoginMenu;
+
+import java.util.Scanner;
+
+public class LoginCustomer {
+	Scanner scanner;
+	public LoginCustomer(Scanner scanner) {
+		this.scanner = scanner;
+	}
+	public void loginUser() {
+		
+		
+	}
+
+}

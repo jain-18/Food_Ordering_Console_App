@@ -23,6 +23,8 @@
 .idea/
 *.iml
 
+*.metadata
+
 # Eclipse
 .project
 .classpath

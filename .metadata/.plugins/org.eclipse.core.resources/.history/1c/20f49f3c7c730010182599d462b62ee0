@@ -1,0 +1,11 @@
+package com.foodapp.entity;
+
+public class User {
+	private String firstName;
+	private String lastName;
+	private String Address;
+	private String emailId;
+	private String mobileNo;
+	private String password;
+
+}

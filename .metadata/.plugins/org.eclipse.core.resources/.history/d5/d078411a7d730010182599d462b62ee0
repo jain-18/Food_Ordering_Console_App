@@ -1,0 +1,39 @@
+package com.foodapp.beforeLoginMenu;
+
+import java.util.Scanner;
+
+public class RegisterCustomer {
+	Scanner scanner;
+
+	public RegisterCustomer(Scanner scanner) {
+		this.scanner = scanner;
+	}
+
+	public void register() {
+		System.out.println("\n------Registration--------");
+		int check = 0;
+		String firstName = correctName("First name");
+		String lastName = correctName("Last name");
+		
+		check = 0;
+		
+		
+	}
+	
+	public String correctName(String pos) {
+		String firstName = "";
+		int check = 0;
+		while (check == 0) {
+			System.out.print("Enter "+pos+" (no space) :- ");
+			firstName = scanner.nextLine();
+			if (firstName.matches("^[A-Za-z]+$") && firstName != null) {
+				return firstName;
+			} else {
+				System.out.println("Enter name with alphabets only!!");
+			}
+		}
+		return null;
+		
+	}
+
+}
