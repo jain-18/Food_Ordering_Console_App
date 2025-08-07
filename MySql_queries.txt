@@ -1,0 +1,10 @@
+create database foodapp;
+use foodapp;
+
+create table user(
+firstName varchar(50),
+lastName varchar(50),
+email varchar(50) primary key,
+address varchar(50),
+password varchar(500),
+mobileno long);
