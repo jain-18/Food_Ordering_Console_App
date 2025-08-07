@@ -57,6 +57,51 @@ public class DataBaseOperation {
 	    }
 	}
 
+	public static boolean validateUser(String email, String password) {
+	    String query = "SELECT * FROM user WHERE email = ? AND password = ?";
+
+	    try (Connection conn = MyConnection.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(query)) {
+
+	        ps.setString(1, email);
+	        ps.setString(2, password);  // 🔐 Use hashed password in production
+
+	        ResultSet rs = ps.executeQuery();
+
+	        // If a match is found
+	        return rs.next();
+
+	    } catch (Exception e) {
+	        System.out.println("🚨 Error while validating user: " + e.getMessage());
+	        return false;
+	    }
+	}
+
+	public static int userId(String email, String password) {
+	    String query = "SELECT userid FROM user WHERE email = ? AND password = ?";
+
+	    try (Connection conn = MyConnection.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(query)) {
+
+	        ps.setString(1, email);
+	        ps.setString(2, password); 
+
+	        ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	            return rs.getInt("userid");
+	        } else {
+	            return -1; // User not found
+	        }
+
+	    } catch (Exception e) {
+	        System.out.println("🚨 Error fetching userId: " + e.getMessage());
+	        return -1; // Error occurred
+	    }
+	}
+
+
+
 
 
 }

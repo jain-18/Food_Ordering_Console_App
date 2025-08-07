@@ -3,6 +3,7 @@ package com.foodapp.beforeLoginMenu;
 import java.util.Scanner;
 
 import com.foodapp.DBOperation.DataBaseOperation;
+import com.foodapp.Validation.Validation;
 import com.foodapp.entity.User;
 
 public class RegisterCustomer {
@@ -15,14 +16,15 @@ public class RegisterCustomer {
 	public User register() {
 		System.out.println("\n------ Registration ------");
 		scanner.nextLine();
-		String firstName = correctName("First name");
-		String lastName = correctName("Last name");
+		Validation validate = new Validation(scanner);
+		String firstName = validate.correctName("First name");
+		String lastName = validate.correctName("Last name");
 
-		String address = inputNonEmpty("Address");
+		String address = validate.inputNonEmpty("Address");
 
-		String email = inputEmail();
-		String mobile = inputMobile();
-		String password = inputPassword();
+		String email = validate.inputEmail();
+		String mobile = validate.inputMobile();
+		String password = validate.inputPassword();
 
 		// Create and set the user object
 		User user = new User();
@@ -37,65 +39,5 @@ public class RegisterCustomer {
 		return user;
 	}
 
-	private String correctName(String fieldName) {
-		while (true) {
-			System.out.print("Enter " + fieldName + " (no spaces): ");
-			String input = scanner.nextLine();
-			if (input != null && input.matches("^[A-Za-z]+$")) {
-				return input;
-			} else {
-				System.out.println("❌ Invalid " + fieldName + ". Only alphabets allowed.");
-			}
-		}
-	}
-
-	private String inputNonEmpty(String fieldName) {
-		while (true) {
-			System.out.print("Enter " + fieldName + ": ");
-			String input = scanner.nextLine();
-			if (!input.trim().isEmpty()) {
-				return input;
-			} else {
-				System.out.println("❌ " + fieldName + " cannot be empty.");
-			}
-		}
-	}
-
-	private String inputEmail() {
-		while (true) {
-			System.out.print("Enter Email: ");
-			String email = scanner.nextLine();
-			if (email.matches("^[\\w.-]+@[\\w.-]+\\.\\w{2,}$")) {
-				if (DataBaseOperation.emailExists(email)) {
-					return email;
-				}
-			} else {
-				System.out.println("❌ Invalid email format.");
-			}
-		}
-	}
-
-	private String inputMobile() {
-		while (true) {
-			System.out.print("Enter Mobile No (10 digits): ");
-			String mobile = scanner.nextLine();
-			if (mobile.matches("^[6-9]\\d{9}$")) {
-				return mobile;
-			} else {
-				System.out.println("❌ Invalid mobile number. Must start with 6-9 and be 10 digits.");
-			}
-		}
-	}
-
-	private String inputPassword() {
-		while (true) {
-			System.out.print("Enter Password (min 6 chars): ");
-			String pwd = scanner.nextLine();
-			if (pwd.length() >= 6) {
-				return pwd;
-			} else {
-				System.out.println("❌ Password must be at least 6 characters.");
-			}
-		}
-	}
+	
 }
