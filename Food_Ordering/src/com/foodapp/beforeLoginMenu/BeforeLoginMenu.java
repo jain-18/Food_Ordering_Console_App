@@ -8,7 +8,7 @@ import com.foodapp.entity.User;
 public class BeforeLoginMenu {
 	Scanner scanner = new Scanner(System.in);
 
-	public void menuBeforeLogin() {
+	public void menuBeforeLogin() throws ClassNotFoundException {
 		System.out.println("-----------------Welcome to food Ordering App---------------");
 		while (true) {
 			System.out.println("\n#--Options--#");
@@ -31,7 +31,7 @@ public class BeforeLoginMenu {
 			switch (choice) {
 			case 1:
 				LoginCustomer login = new LoginCustomer(scanner);
-				login.loginUser();
+				login.login();
 				break;
 
 			case 2:

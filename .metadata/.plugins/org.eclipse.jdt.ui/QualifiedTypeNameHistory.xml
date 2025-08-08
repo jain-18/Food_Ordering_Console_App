@@ -1,4 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.security.DomainCombiner"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.security.MessageDigest"/>
+    <fullyQualifiedTypeName name="java.security.NoSuchAlgorithmException"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="com.foodapp.AfterLogin.admin.AdminService"/>
+    <fullyQualifiedTypeName name="com.foodapp.Service.UserPrinter"/>
+    <fullyQualifiedTypeName name="com.foodapp.Service.MyConnection"/>
+    <fullyQualifiedTypeName name="com.foodapp.AfterLogin.admin.CouponDAO"/>
+    <fullyQualifiedTypeName name="com.foodapp.Service.InputUtil"/>
+    <fullyQualifiedTypeName name="com.foodapp.AfterLogin.admin.UserDAO"/>
+    <fullyQualifiedTypeName name="com.foodapp.DBOperation.MenuDAO"/>
+    <fullyQualifiedTypeName name="com.foodapp.DBOperation.CouponDAO"/>
+    <fullyQualifiedTypeName name="com.foodapp.DBOperation.DeliveryPartnerDAO"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.foodapp.entity.CartItem"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.foodapp.entity.User"/>
+    <fullyQualifiedTypeName name="com.foodapp.entity.MenuItem"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="com.foodapp.entity.Coupon"/>
+    <fullyQualifiedTypeName name="com.foodapp.entity.DeliveryPartner"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="com.foodapp.Service.OrderService"/>
+    <fullyQualifiedTypeName name="com.foodapp.Service.PasswordUtil"/>
 </qualifiedTypeNameHistroy>

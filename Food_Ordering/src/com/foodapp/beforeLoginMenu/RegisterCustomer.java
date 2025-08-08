@@ -3,6 +3,7 @@ package com.foodapp.beforeLoginMenu;
 import java.util.Scanner;
 
 import com.foodapp.DBOperation.DataBaseOperation;
+import com.foodapp.Service.PasswordUtil;
 import com.foodapp.Validation.Validation;
 import com.foodapp.entity.User;
 
@@ -33,7 +34,7 @@ public class RegisterCustomer {
 		user.setAddress(address);
 		user.setEmailId(email);
 		user.setMobileNo(mobile);
-		user.setPassword(password);
+		user.setPassword(PasswordUtil.hashPassword(password));
 
 		System.out.println("✅ Registration successful!");
 		return user;

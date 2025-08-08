@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+/**
+ * 
+ */
+module Food_Ordering {
+	requires java.sql;
+	requires java.desktop;
+}

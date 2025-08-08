@@ -1,0 +1,27 @@
+package com.foodapp.Service;
+
+import java.util.List;
+
+import com.foodapp.entity.User;
+
+public class UserPrinter {
+
+    public static void printUsers(List<User> users) {
+        // Table header
+        System.out.printf("%-5s %-15s %-15s %-20s %-25s %-15s%n",
+                "ID", "First Name", "Last Name", "Address", "Email", "Mobile No");
+        System.out.println("---------------------------------------------------------------------------------------------");
+
+        // Table rows
+        for (User u : users) {
+            System.out.printf("%-5d %-15s %-15s %-20s %-25s %-15s%n",
+                    u.getId(),
+                    u.getFirstName(),
+                    u.getLastName(),
+                    u.getAddress(),
+                    u.getEmailId(),
+                    u.getMobileNo());
+        }
+    }
+}
+

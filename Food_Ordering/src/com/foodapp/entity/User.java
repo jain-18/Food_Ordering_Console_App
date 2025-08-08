@@ -1,6 +1,7 @@
 package com.foodapp.entity;
 
 public class User {
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String Address;
@@ -9,6 +10,13 @@ public class User {
 	private String password;
 	
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getFirstName() {
 		return firstName;
 	}

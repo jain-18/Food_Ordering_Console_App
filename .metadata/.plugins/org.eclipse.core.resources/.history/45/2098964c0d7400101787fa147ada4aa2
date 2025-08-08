@@ -1,0 +1,5 @@
+package com.foodapp.AfterLogin.admin;
+
+public class DeliveryPartnerDAO {
+
+}

@@ -1,0 +1,163 @@
+package com.foodapp.AfterLogin.admin;
+
+import java.util.List;
+
+import com.foodapp.Service.InputUtil;
+import com.foodapp.entity.MenuItem;
+
+public class AdminService {
+	private final MenuDAO menuDao = new MenuDAO();
+    private final CouponDAO couponDao = new CouponDAO();
+    private final DeliveryPartnerDAO deliveryDao = new DeliveryPartnerDAO();
+    private final UserDAO userDao = new UserDAO();
+
+    private final String ADMIN_USERNAME = "admin";
+    private final String ADMIN_PASSWORD = "admin123";
+
+    public void adminLogin() throws ClassNotFoundException {
+        String username = InputUtil.getString("Enter admin username: ");
+        String password = InputUtil.getString("Enter admin password: ");
+        if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
+            showAdminMenu();
+        } else {
+            System.out.println("Invalid admin credentials.");
+        }
+    }
+
+    private void showAdminMenu() throws ClassNotFoundException {
+        while (true) {
+            System.out.println("\n--- Admin Menu ---");
+            System.out.println("1. Manage Menu");
+            System.out.println("2. Manage Coupons");
+            System.out.println("3. Manage Delivery Partners");
+            System.out.println("4. View Registered Users");
+            System.out.println("5. Logout");
+
+            int choice = InputUtil.getInt("Enter choice: ");
+            switch (choice) {
+                case 1 -> manageMenu();
+                case 2 -> manageCoupons();
+                case 3 -> manageDeliveryPartners();
+                case 4 -> viewAllUsers();
+                case 5 -> {
+                    System.out.println("Logging out admin...");
+                    return;
+                }
+                default -> System.out.println("Invalid choice!");
+            }
+        }
+    }
+
+    private void manageMenu() throws ClassNotFoundException {
+        while (true) {
+            System.out.println("\n--- Manage Menu ---");
+            System.out.println("1. Add Item");
+            System.out.println("2. Delete Item");
+            System.out.println("3. View All Items");
+            System.out.println("4. Back");
+
+            int choice = InputUtil.getInt("Enter choice: ");
+            switch (choice) {
+                case 1 -> {
+                    String name = InputUtil.getString("Enter food name: ");
+                    double price = InputUtil.getDouble("Enter price: ");
+                    menuDao.addItem(new MenuItem(0, name, price));
+                    System.out.println("Item added.");
+                }
+                case 2 -> {
+                    int id = InputUtil.getInt("Enter item ID to delete: ");
+                    menuDao.deleteItem(id);
+                    System.out.println("Item deleted.");
+                }
+                case 3 -> {
+                    List<MenuItem> items = menuDao.findAll();
+                    if (items.isEmpty()) {
+                        System.out.println("No items found.");
+                    } else {
+                        System.out.println("--- Food Menu ---");
+                        for (MenuItem item : items) {
+                            System.out.println(item);
+                        }
+                    }
+                }
+                case 4 -> { return; }
+                default -> System.out.println("Invalid choice!");
+            }
+        }
+    }
+
+    private void manageCoupons() {
+        while (true) {
+            System.out.println("\n--- Manage Coupons ---");
+            System.out.println("1. Add Coupon");
+            System.out.println("2. View All Coupons");
+            System.out.println("3. Back");
+
+            int choice = InputUtil.getInt("Enter choice: ");
+            switch (choice) {
+                case 1 -> {
+                    String code = InputUtil.getString("Enter coupon code: ");
+                    double discount = InputUtil.getDouble("Enter discount amount: ");
+                    couponDao.addCoupon(new Coupon(code, discount));
+                    System.out.println("Coupon added.");
+                }
+                case 2 -> {
+                    List<Coupon> coupons = couponDao.findAll();
+                    if (coupons.isEmpty()) {
+                        System.out.println("No coupons found.");
+                    } else {
+                        System.out.println("--- Available Coupons ---");
+                        for (Coupon coupon : coupons) {
+                            System.out.println(coupon);
+                        }
+                    }
+                }
+                case 3 -> { return; }
+                default -> System.out.println("Invalid choice!");
+            }
+        }
+    }
+
+    private void manageDeliveryPartners() {
+        while (true) {
+            System.out.println("\n--- Manage Delivery Partners ---");
+            System.out.println("1. Add Partner");
+            System.out.println("2. View All Partners");
+            System.out.println("3. Back");
+
+            int choice = InputUtil.getInt("Enter choice: ");
+            switch (choice) {
+                case 1 -> {
+                    String name = InputUtil.getString("Enter partner name: ");
+                    deliveryDao.addPartner(name);
+                    System.out.println("Partner added.");
+                }
+                case 2 -> {
+                    List<DeliveryPartner> partners = deliveryDao.findAll();
+                    if (partners.isEmpty()) {
+                        System.out.println("No delivery partners found.");
+                    } else {
+                        System.out.println("--- Delivery Partners ---");
+                        for (DeliveryPartner partner : partners) {
+                            System.out.println(partner);
+                        }
+                    }
+                }
+                case 3 -> { return; }
+                default -> System.out.println("Invalid choice!");
+            }
+        }
+    }
+
+    private void viewAllUsers() {
+        List<User> users = userDao.findAll();
+        if (users.isEmpty()) {
+            System.out.println("No users registered.");
+        } else {
+            System.out.println("--- Registered Users ---");
+            for (User user : users) {
+                System.out.println(user);
+            }
+        }
+    }
+}
